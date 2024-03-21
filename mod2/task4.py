@@ -10,7 +10,7 @@ def get_hex_dict():
 
 def get_dif_system_for_dec(dec_number, basis):
     if basis > 16:
-        raise ValueError("Basis > 16 is not allowed")
+        raise ValueError("Базис > 16 не допускается")
     result = ''
     hex_dictionary = dict() if basis < 10 else get_hex_dict()
     while dec_number != 0:
@@ -22,7 +22,7 @@ def get_dif_system_for_dec(dec_number, basis):
 def main():
     number = int(input())
     if number <= 0:
-        print("Incorrect input!")
+        print("Неверный ввод!")
         exit()
     try:
         binary = get_dif_system_for_dec(number, 2);

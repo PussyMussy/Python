@@ -1,22 +1,23 @@
-line = input()
-lineLength = len(line)
-numbersList = []
-numberTemp = ''
+def sort_and_find_middle(a, b, c):
+    # Сортировка чисел по возрастанию
+    if a > b:
+        a, b = b, a
+    if a > c:
+        a, c = c, a
+    if b > c:
+        b, c = c, b
 
-for char in enumerate(line):
-    if char[1] != ' ':
-        numberTemp += char[1]
-        if char[0] != lineLength - 1:
-            continue
-    numbersList.append(numberTemp)
-    numberTemp = ''
+    # Определение числа, стоящего между двумя другими
+    middle_number = b
 
-a, b, c = numbersList;
+    return a, middle_number, c
 
-if a > b:
-    a, b = b, a
-if b > c:
-    b, c = c, b
-if a > b:
-    a, b = b, a
-print(b)
+# Ввод трех чисел
+a = float(input("Введите число a: "))
+b = float(input("Введите число b: "))
+c = float(input("Введите число c: "))
+
+# Вызов функции и вывод результата
+sorted_a, middle, sorted_c = sort_and_find_middle(a, b, c)
+print("Упорядоченные числа:", sorted_a, middle, sorted_c)
+print("Число, стоящее между двумя другими:", middle)
