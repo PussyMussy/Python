@@ -1,16 +1,31 @@
-def get_palindrom(word):
-    word = word.lower()
-    counts = dict()
-    for letter in word:
-        counts[letter] = 1 if letter not in counts else counts[letter] + 1 
-    middle = ""
-    palindrom = ""
-    if middle:
-        malindrom = middle * counts[middle]
-    for letter in counts:
-        if letter != middle:
-            palindrom = letter * int(counts[letter] / 2) + palindrom + letter * int(counts[letter] / 2) 
-    return palindrom
+def can_make_palindrome(word):
+    char_count = {}
+    for char in word:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
 
-word = input()
-print(get_palindrom(word))
+    odd_count = 0
+    odd_char = ''
+    for char, count in char_count.items():
+        if count % 2 != 0:
+            odd_count += 1
+            odd_char = char
+
+    if odd_count > 1:
+        return False
+
+    palindrome = ''
+    for char, count in char_count.items():
+        palindrome += char * (count // 2)
+
+    return palindrome + odd_char + palindrome[::-1]
+
+
+word = input("Введите слово: ")
+result = can_make_palindrome(word)
+if result:
+    print(result)
+else:
+    print("Из данного слова нельзя составить палиндром.")

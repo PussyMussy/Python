@@ -1,11 +1,12 @@
 def check_numbers(numbers):
-    uniqueLen = len(list(set(numbers)))
-    if uniqueLen == 1:
+    unique_numbers = set(numbers)
+    if len(unique_numbers) == 1:
         print("Все числа равны")
-    elif uniqueLen < len(numbers):
-        print("Есть равные и неравные числа")
-    else:
+    elif len(unique_numbers) == len(numbers):
         print("Все числа разные")
-         
-numbers = list(map(int, input().split()))
-check_numbers(numbers)
+    else:
+        print("Есть равные и неравные числа")
+
+input_numbers = input("Введите числа через пробел: ")
+numbers_list = list(map(int, input_numbers.split()))
+check_numbers(numbers_list)
